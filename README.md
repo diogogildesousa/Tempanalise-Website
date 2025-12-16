@@ -1,7 +1,5 @@
 # Tempanálise Webpage
 
-#### Video Demo: <http://www.youtube.com/watch?v=DSJ6o7b2rBE>
-
 #### Description
 
 The **Tempanálise Webpage** is a full-stack, responsive informational website developed as my CS50x Final Project. The primary goal was to create a modern, user-friendly, and maintainable platform for presenting essential company information, focusing on legal compliance documents, certifications, and client communication. The application features dynamic content loading, aesthetic design elements, and robust input validation.
