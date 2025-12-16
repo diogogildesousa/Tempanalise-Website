@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}Tempanálise // Serviços{% endblock %}
+
+{% block content %}
+
+<h1 class="section-title">Serviços</h1>
+
+<section class="cards-container">
+
+    <div class="card_data_ai">
+        <img src="{{ url_for('static', filename='img/data_analysis.png') }}" alt="Análise de Dados">
+        <div class="text-content">
+            <h3>Análise de Dados</h3>
+            <p>Na Tempanálise, transformamos os dados recolhidos dos tacógrafos em informação estratégica. A nossa solução permite extrair, organizar e interpretar dados de tacógrafos digitais e cartões de motorista de forma segura e eficiente, garantindo conformidade legal e relatórios detalhados que facilitam a tomada de decisões para a gestão de frotas.</p>
+        </div>
+    </div>
+
+    <div class="card_truck">
+        <img src="{{ url_for('static', filename='img/truck1.png') }}" alt="Calibração Metrológica">
+        <div class="text-content">
+            <h3>Calibração Metrológica</h3>
+            <p>Oferecemos calibração rigorosa de tacógrafos, assegurando que todos os veículos da sua frota estejam em total conformidade com os requisitos legais. O serviço inclui testes precisos de velocidade e tempo, verificações periódicas e documentação certificada, minimizando riscos de penalizações e garantindo a fiabilidade dos registos.</p>
+        </div>
+    </div>
+
+    <div class="card_tachodrive">
+        <img src="{{ url_for('static', filename='img/tachodrive.png') }}" alt="Equipamentos de Descarga">
+        <div class="text-content">
+            <h3>Equipamentos de Descarga</h3>
+            <p>Fornecemos e operamos equipamentos de última geração para descarga segura de dados de tacógrafos digitais e analógicos. Estes dispositivos garantem rapidez, precisão e segurança na transferência de informação, permitindo às empresas manter um fluxo de trabalho eficiente sem comprometer a integridade dos dados.</p>
+        </div>
+    </div>
+
+    <div class="card_display">
+        <img src="{{ url_for('static', filename='img/display.png') }}" alt="Limitadores de Velocidade">
+        <div class="text-content">
+            <h3>Limitadores de Velocidade</h3>
+            <p>Instalamos e calibramos limitadores de velocidade de acordo com as normas de segurança vigentes, protegendo veículos e motoristas. O serviço inclui ajustes precisos, testes de funcionamento e documentação completa, assegurando que cada veículo opere dentro dos parâmetros legais e de segurança estabelecidos.</p>
+        </div>
+    </div>
+
+    <div class="card_driver">
+        <img src="{{ url_for('static', filename='img/formacao.png') }}" alt="Formação de Motoristas">
+        <div class="text-content">
+            <h3>Formação de Motoristas</h3>
+            <p>Desenvolvemos formações técnicas especializadas para motoristas e gestores de frota. Os cursos abrangem legislação, condução segura, gestão de tacógrafos e análise de dados. Disponibilizamos sessões presenciais, online e combinadas, garantindo que a sua equipa esteja preparada para operar de forma eficiente, segura e conforme a lei.</p>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

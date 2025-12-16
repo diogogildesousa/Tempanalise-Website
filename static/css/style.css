@@ -1,0 +1,1500 @@
+/*----------------------------------------------------------------------- RESET & GLOBAL ----------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@font-face {
+    font-family: 'Hauser';
+    src: url('/static/fonts/hauser-italic.woff2') format('woff2'),
+        url('/static/fonts/hauser-italic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+html {
+    height: 100%;
+    background: url('/static/img/fundo.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #000;
+    font-size: 16px;
+    transition: background-color 0.6s ease;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #fff;
+    margin-top: 0;
+    transition: color 0.6s ease;
+}
+
+main {
+    flex: 1;
+    padding: 2rem 1rem;
+    margin-top: 20px;
+}
+
+.container {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+/*----------------------------------------------------------------------- HEADER ----------------------------------------------------------------------- */
+header {
+    margin-top: 10px;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background: linear-gradient(90deg, rgba(202, 195, 195, 0.07) 0%, rgba(234, 114, 114, 0.12) 35%, rgba(132, 64, 64, 0.12) 100%);
+    border-bottom: 1px solid #FF5B5B;
+    backdrop-filter: blur(50px);
+    z-index: 1000;
+}
+
+header .logo a {
+    height: 50px;
+    width: 250px;
+    display: inline-block;
+    background: url('/static/img/logo_header.png') no-repeat center center / contain;
+}
+
+/* Novo: Contêiner para os botões da direita */
+.header-right-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#hamburgerBtn {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+#hamburgerBtn .hamburger-line {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #FF5B5B;
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#hamburgerBtn.open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+#hamburgerBtn.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+#hamburgerBtn.open .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+header nav .nav-links {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 50px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    gap: 30px;
+    z-index: 999;
+}
+
+header nav .nav-links.show {
+    display: flex;
+}
+
+/* Nova classe para o fundo do menu mobile */
+.mobile-menu-overlay {
+    background: linear-gradient(321deg, rgba(150, 71, 71, 0.85), rgba(48, 23, 23, 0.85));
+    border-bottom: 1.5px solid #900B09;
+    backdrop-filter: blur(9.5px);
+}
+
+header nav a {
+    padding: 10px 30px;
+    border: 2px solid #FF5B5B;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    letter-spacing: 0.11em;
+    color: #FF5B5B;
+    transition: 0.3s ease;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+}
+
+header nav a:hover {
+    background: #F4A8A8;
+    border-color: #F4A8A8;
+    color: #000;
+}
+
+header nav a.active {
+    background: #FF5B5B;
+    border-color: #FF5B5B;
+    color: #000;
+}
+
+header nav a.active:hover {
+    background: #8b2323;
+    border-color: #8b2323;
+}
+
+/*----------------------------------------------------------------------- PAGE TITLES ----------------------------------------------------------------------- */
+.section-title {
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'Hauser', sans-serif;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 10vw, 4.5rem);
+    color: #FFFFFF;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 90%;
+    max-width: 940px;
+    height: 4px;
+    background-color: #FF5B5B;
+    margin: 10px auto 0;
+}
+
+/*----------------------------------------------------------------------- INDEX PAGE ----------------------------------------------------------------------- */
+.logo_index,
+.lettering {
+    display: flex;
+    justify-content: center;
+}
+
+.logo_index .logo-img {
+    width: 85%;
+    max-width: 600px;
+    height: auto;
+    margin-top: 80px;
+    background: url('/static/img/logo.png') no-repeat center center / contain;
+    aspect-ratio: 1/1;
+}
+
+.lettering .lettering-img {
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    background: url('/static/img/lettering.png') no-repeat center center / contain;
+    filter: drop-shadow(4px 4px 45.6px rgba(0, 0, 0, 0.51)) drop-shadow(-4px -4px 20.3px #000000);
+    aspect-ratio: 7/1;
+    margin-top: 30px;
+}
+
+.slogan {
+    text-align: center;
+    font-family: 'Hauser', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(0.8rem, 2vw, 1.25rem);
+    letter-spacing: 0.2em;
+    color: #FFFFFF;
+    opacity: 0.64;
+    text-shadow: 0px 4px 9.3px #000000, 1px -5px 8.1px rgba(0, 0, 0, 0.45), -3px -2px 6.1px rgba(0, 0, 0, 0.83);
+    margin-top: 20px;
+}
+
+.quem-somos {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 1120px;
+    margin: 80px auto;
+}
+
+.quem-somos h2 {
+    font-family: 'Hauser', sans-serif;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    font-weight: 100;
+    color: #fff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px #333;
+}
+
+.quem-somos .barra {
+    width: 90%;
+    max-width: 1120px;
+    height: 4px;
+    background-color: #FF5B5B;
+    margin: 0 auto 20px auto;
+    border-radius: 2px;
+}
+
+.quem-somos p {
+    font-size: clamp(1rem, 5vw, 1.25rem);
+    line-height: 1.6;
+    color: #ddd;
+    text-align: left;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px #333;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cards>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 750px;
+    background: linear-gradient(321.26deg, rgba(150, 71, 71, 0.3) -60.13%, rgba(48, 23, 23, 0.3) 28.47%);
+    border: 1.5px solid #900B09;
+    border-radius: 12px;
+    backdrop-filter: blur(9.5px);
+    padding: 30px 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.cards>div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.card-img {
+    width: 70%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#missao-img {
+    background-image: url('/static/img/missao.png');
+}
+
+#visao-img {
+    background-image: url('/static/img/visao.png');
+}
+
+#valores-img {
+    background-image: url('/static/img/valores.png');
+}
+
+.cards h3 {
+    font-size: clamp(1.5rem, 7vw, 1.75rem);
+    font-weight: 700;
+    color: #F4A8A8;
+}
+
+.cards p {
+    font-size: clamp(1rem, 5vw, 1.125rem);
+    line-height: 1.5;
+    color: #ddd;
+    text-align: left;
+}
+
+.porque-escolher {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 30px;
+    background: linear-gradient(321.26deg, rgba(150, 71, 71, 0.75) -60.13%, rgba(48, 23, 23, 0.75) 28.47%);
+    border: 1.5px solid #900B09;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+}
+
+.index_list {
+    font-size: clamp(1.5rem, 7vw, 1.8rem);
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.index_list::after {
+    content: '';
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: 4px;
+    background-color: #FF5B5B;
+    margin-top: 12px;
+}
+
+.porque-escolher ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: clamp(1rem, 5vw, 1.125rem);
+}
+
+.porque-escolher li::before {
+    content: "✔";
+    color: #FF5B5B;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/*----------------------------------------------------------------------- SERVIÇOS PAGE -------------------------------------------------------------------- */
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cards-container>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    background: linear-gradient(321.26deg, rgba(150, 71, 71, 0.3) -60.13%, rgba(48, 23, 23, 0.3) 28.47%);
+    border: 1.5px solid #900B09;
+    border-radius: 12px;
+    backdrop-filter: blur(9.5px);
+    padding: 30px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cards-container>div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.cards-container img {
+    width: 80%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.cards-container .text-content {
+    width: 100%;
+}
+
+.cards-container h3 {
+    font-size: 1.8rem;
+    color: #F4A8A8;
+    margin-bottom: 10px;
+}
+
+.cards-container p {
+    font-size: 1.125rem;
+    color: #ddd;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/*----------------------------------------------------------------------- CERTIFICADOS PAGE ------------------------------------------------------------------*/
+.certificados-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 60px 0;
+}
+
+.certificados-row img {
+    height: 110px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.certificados-row img:hover {
+    transform: scale(1.05);
+}
+
+.certificados-quote,
+.certificados-distincao {
+    max-width: 940px;
+    margin: 40px auto;
+    padding: 25px;
+    background: linear-gradient(321.26deg, rgba(150, 71, 71, 0.75) -60.13%, rgba(48, 23, 23, 0.75) 28.47%);
+    border: 1.5px solid #900B09;
+    border-radius: 12px;
+    backdrop-filter: blur(9.5px);
+    color: #ccc;
+    font-size: clamp(1.125rem, 5vw, 1.25rem);
+}
+
+.certificados-quote p {
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+}
+
+.certificados-quote h3 {
+    font-size: 1rem;
+    text-align: right;
+    margin: 0;
+}
+
+/*----------------------------------------------------------------------- LEGISLAÇÃO PAGE --------------------------------------------------------------------*/
+.artigos {
+    padding: 40px 20px;
+}
+
+.artigo-item {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 20px;
+    list-style: none;
+}
+
+.artigo-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.artigo-item h3 {
+    font-size: 1.5rem;
+    margin: 0 0 8px 0;
+    color: #FF5B5B;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px #333;
+}
+
+.artigo-item .data {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 10px;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px #333;
+}
+
+.artigo-item .resumo {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px #333;
+}
+
+.artigos-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.artigos-nav .btn-nav {
+    text-decoration: none;
+    color: #FF5B5B;
+    font-weight: bold;
+}
+
+.artigos-nav .btn-nav:hover {
+    text-decoration: underline;
+}
+
+/*----------------------------------------------------------------------- CONTACTOS PAGE ---------------------------------------------------------------------*/
+.contactos {
+    max-width: 940px;
+    margin: auto;
+}
+
+.contactos h2 {
+    font-size: clamp(1.5rem, 8vw, 1.8rem);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    padding-top: 40px;
+    color: #F4A8A8;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px #333;
+    font-family: 'Hauser', sans-serif;
+    letter-spacing: 2px;
+}
+
+.contactos .map iframe {
+    width: 100%;
+    border-radius: 12px;
+    min-height: 350px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    margin-bottom: 50px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background: linear-gradient(321.26deg, rgba(150, 71, 71, 0.3) -60.13%, rgba(48, 23, 23, 0.3) 28.47%);
+    border: 1px solid #900B09;
+    border-radius: 8px;
+    padding: 30px;
+    backdrop-filter: blur(8px);
+}
+
+.card input,
+.card textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.125rem;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card ::placeholder {
+    color: #ccc;
+    font-weight: 500;
+}
+
+.card-mensagem {
+    min-height: 240px;
+}
+
+.btn-enviar {
+    margin-top: 20px;
+    margin-bottom: 80px;
+    padding: 15px 40px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    background: #FF5B5B;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background: #8b2323;
+}
+
+/*----------------------------------------------------------------------- OTHER PAGES (PDF, ERROR) -----------------------------------------------------------*/
+.pdf-viewer-section {
+    padding: 40px 20px;
+}
+
+.pdf-title {
+    font-size: 1.125rem;
+    text-align: center;
+    color: #FF5B5B;
+    margin-bottom: 30px;
+}
+
+.pdf-container {
+    max-width: 940px;
+    margin: 40px auto;
+}
+
+.pdf-back {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pdf-back .btn-back {
+    text-decoration: none;
+    color: #FF5B5B;
+    font-weight: bold;
+    padding: 10px 24px;
+    border: 1.5px solid #FF5B5B;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.pdf-back .btn-back:hover {
+    background: #FF5B5B;
+    color: #fff;
+}
+
+.erro {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.erro h1 {
+    font-size: clamp(3rem, 12vw, 4rem);
+    margin-bottom: 20px;
+}
+
+.erro p {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    margin-bottom: 30px;
+    color: #FF5B5B;
+}
+
+.erro .btn-enviar {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 30px;
+}
+
+/* Estilo para a mensagem de erro que aparece por baixo do campo */
+.error {
+    color: #FF5B5B;
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 10px;
+    padding-left: 5px;
+}
+
+/*----------------------------------------------------------------------- FOOTER ----------------------------------------------------------------------- */
+.site-footer {
+    background: linear-gradient(321deg, rgba(150, 71, 71, 0.85), rgba(48, 23, 23, 0.85));
+    border-top: 1.5px solid #900B09;
+    padding: 30px 20px;
+}
+
+.footer-wrapper {
+    max-width: 940px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.footer-company svg {
+    margin-right: 8px;
+    vertical-align: middle;
+    fill: #fff;
+}
+
+.email-icon {
+    width: 1.2rem;
+    /* Tamanho do ícone. Ajuste conforme necessário. */
+    height: 1.2rem;
+    vertical-align: middle;
+    /* Alinha o ícone verticalmente com o texto. */
+    margin-right: 8px;
+    /* Adiciona um espaço à direita do ícone. */
+}
+
+/* Garante que o ícone tem a cor do texto do parágrafo. */
+.email-icon path {
+    fill: currentColor;
+}
+
+.footer-company h4,
+.footer-links h4,
+.footer-social h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    border-bottom: 3px solid #FF5B5B;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.footer-company p {
+    font-size: 0.9rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 6px;
+}
+
+.footer-links a {
+    text-decoration: underline;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.social-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: #FF5B5B;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    color: #fff;
+    text-align: center;
+}
+
+.social-btn:hover {
+    background: #8b2323;
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+/*
+==============================================
+    Botão do Tema
+==============================================
+*/
+/* Container principal do botão */
+.theme-toggle {
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    position: relative;
+    z-index: 1001;
+    overflow: hidden;
+}
+
+/* Trilho da pastilha */
+.toggle-track {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 1px solid #33333330;
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Mudar a cor do trilho no modo escuro */
+.theme-toggle.dark-mode .toggle-track {
+    background-color: #2e2e2e;
+}
+
+/* O "sol" ou "lua" que se move */
+.toggle-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, #FF5B5B 0%, #FF5B5B 60%, rgba(255, 91, 91, 0.1) 85%, rgba(255, 91, 91, 0) 100%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Pseudo-elemento para o "sol" (para compatibilidade, podemos usar apenas a cor de fundo do thumb) */
+.toggle-thumb::before {
+    content: '';
+    display: none;
+    /* Não é necessário para o sol, então escondemo-lo */
+}
+
+/* Pseudo-elemento para a lua e o seu "corte" */
+.toggle-thumb::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #FF5B5B;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+}
+
+/* Mover o thumb para a direita no modo escuro */
+.theme-toggle.dark-mode .toggle-thumb {
+    transform: translateX(30px);
+    background-color: #f0f2f5;
+    /* A cor do "círculo" de fora, a que o utilizador vai ver */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustar o pseudo-elemento para criar a lua no modo escuro */
+.theme-toggle.dark-mode .toggle-thumb::after {
+    transform: translateX(-30%) translateY(-4px);
+    background-color: #2e2e2e;
+}
+
+/*----------------------------------------------------------------------- LIGHT MODE -----------------------------------------------------------------------*/
+/* Correção: Usando a classe 'dark-mode' no <body> para controlar o tema */
+body.dark-mode {
+    background: url('/static/img/fundo.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #000;
+    color: #fff;
+}
+
+body:not(.dark-mode) {
+    background: url('/static/img/fundo_dia.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+body:not(.dark-mode) header nav .mobile-menu-overlay {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1.5px solid #FF5B5B;
+}
+
+body:not(.dark-mode) header {
+    background: rgba(255, 255, 255, 0.247);
+    border-bottom: 1px solid #FF5B5B;
+}
+
+body:not(.dark-mode) #hamburgerBtn .hamburger-line {
+    background-color: #555;
+}
+
+body:not(.dark-mode) header nav a {
+    color: #444;
+    border-color: #666;
+}
+
+body:not(.dark-mode) header nav a:hover {
+    background: #FF5B5B;
+    border-color: #FF5B5B;
+    color: #fff;
+}
+
+body:not(.dark-mode) header nav a.active {
+    background: #FF5B5B;
+    border-color: #FF5B5B;
+    color: #fff;
+}
+
+body:not(.dark-mode) header nav a.active:hover {
+    background: #8b2323;
+    border-color: #8b2323;
+}
+
+body:not(.dark-mode) .logo a {
+    background-image: url('/static/img/logo_header_black.png');
+}
+
+body:not(.dark-mode) .logo_index .logo-img {
+    background-image: url('/static/img/logo_black.png');
+    filter: none;
+}
+
+body:not(.dark-mode) .footer-company svg {
+    fill: #333;
+}
+
+body:not(.dark-mode) .section-title,
+body:not(.dark-mode) .quem-somos h2 {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #333;
+}
+
+body:not(.dark-mode) .section-title::after,
+body:not(.dark-mode) .quem-somos .barra {
+    background-color: #FF5B5B;
+}
+
+body:not(.dark-mode) .quem-somos p {
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px #333;
+}
+
+body:not(.dark-mode) .slogan {
+    text-shadow: 2px 2px 4px #000;
+    opacity: 1;
+}
+
+body:not(.dark-mode) .cards>div,
+body:not(.dark-mode) .porque-escolher {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: #FF5B5B;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .cards h3,
+body:not(.dark-mode) .index_list {
+    color: #FF5B5B;
+    font-weight: 700;
+    text-shadow: 0.5px 0.5px 0.5px #333;
+}
+
+body:not(.dark-mode) .cards p,
+body:not(.dark-mode) .porque-escolher ul {
+    color: #333;
+    font-weight: 500;
+}
+
+body:not(.dark-mode) .porque-escolher li::before {
+    color: #FF5B5B;
+}
+
+body:not(.dark-mode) .cards-container>div {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: #FF5B5B;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .cards-container h3 {
+    color: #FF5B5B;
+    font-weight: 700;
+    text-shadow: 0.5px 0.5px 0.5px #333;
+}
+
+body:not(.dark-mode) .cards-container p {
+    color: #333;
+    font-weight: 500;
+}
+
+body:not(.dark-mode) .certificados-quote,
+body:not(.dark-mode) .certificados-distincao {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: #FF5B5B;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-weight: 500;
+}
+
+body:not(.dark-mode) .certificados-quote p {
+    color: #333;
+}
+
+body:not(.dark-mode) .artigo-item h3 {
+    color: #F4A8A8;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px #333;
+}
+
+body:not(.dark-mode) .artigo-item .data,
+body:not(.dark-mode) .artigo-item .resumo {
+    color: #Fff;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px #333;
+
+}
+
+body:not(.dark-mode) .artigos-nav .btn-nav {
+    color: #FF5B5B;
+}
+
+body:not(.dark-mode) .contactos h2 {
+    color: #F4A8A8;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #333;
+}
+
+body:not(.dark-mode) .card {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: #FF5B5B;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .card input,
+body:not(.dark-mode) .card textarea {
+    color: #333;
+    font-weight: 500;
+}
+
+body:not(.dark-mode) .card ::placeholder {
+    color: #555;
+    font-weight: 500;
+}
+
+body:not(.dark-mode) .btn-enviar {
+    background: #FF5B5B;
+    color: #fff;
+}
+
+body:not(.dark-mode) .btn-enviar:hover {
+    background: #8b2323;
+}
+
+body:not(.dark-mode) .site-footer {
+    background: rgba(255, 255, 255, 0.55);
+    border-top: 1.5px solid #ccc;
+}
+
+body:not(.dark-mode) .footer-company p,
+body:not(.dark-mode) .footer-links a,
+body:not(.dark-mode) .footer-bottom {
+    color: #333;
+}
+
+body:not(.dark-mode) .footer-col h4 {
+    border-bottom: 3px solid #FF5B5B;
+    color: #333;
+}
+
+body:not(.dark-mode) .footer-company svg {
+    fill: #333;
+}
+
+/*
+==============================================
+    MOBILE LANDSCAPE (Horizontal) - Layout de Transição
+==============================================
+*/
+@media (min-width: 576px) and (orientation: landscape) {
+
+    header {
+        height: 60px;
+        margin-top: 20px;
+    }
+
+    header .logo a {
+        height: 50px;
+        width: 250px;
+    }
+
+    /* Ajuste para o menu hambúrguer no mobile landscape */
+    header nav .nav-links.show {
+        gap: 15px;
+        /* Reduzi o espaçamento para caber tudo */
+        padding: 15px 0;
+    }
+
+    header nav a {
+        font-size: 0.8rem;
+        /* Reduzi o tamanho da fonte */
+        padding: 8px 15px;
+        /* Reduzi o padding */
+        max-width: 200px;
+        /* Limitei a largura */
+    }
+
+    .cards {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .cards-container>div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 20px;
+        background: linear-gradient(321.26deg, rgba(150, 71, 71, 0.3) -60.13%, rgba(48, 23, 23, 0.3) 28.47%);
+        border: 1.5px solid #900B09;
+        border-radius: 12px;
+        backdrop-filter: blur(9.5px);
+        padding: 30px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cards-container img {
+        width: 30%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .logo_index .logo-img,
+    .lettering .lettering-img {
+        width: 40%;
+        max-width: 300px;
+        margin-top: 10px;
+    }
+
+    .slogan {
+        font-size: 1rem;
+        margin-bottom: 50px;
+        margin-top: 15px;
+    }
+
+    .certificados-row {
+        gap: 40px;
+    }
+
+    .certificados-row img {
+        height: 200px;
+        width: auto;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .footer-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer-col {
+        width: 30%;
+    }
+}
+
+/*
+==============================================
+    TABLET PORTRAIT (Min-width: 768px, Max-width: 991px)
+==============================================
+*/
+@media (min-width: 768px) and (max-width: 991px) {
+    #hamburgerBtn {
+        display: block;
+    }
+
+    header nav .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+        gap: 30px;
+        z-index: 999;
+    }
+
+    header nav .nav-links.show {
+        display: flex;
+    }
+
+    header nav .nav-links.show.mobile-menu-overlay {
+        background: linear-gradient(321deg, rgba(150, 71, 71, 0.85), rgba(48, 23, 23, 0.85));
+        border-bottom: 1.5px solid #900B09;
+        backdrop-filter: blur(9.5px);
+    }
+
+    .cards {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .cards-container img {
+    width: 40%;
+    max-width: 300px;
+    height: auto;
+    }
+
+    .cards-container>div {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .cards-container>div:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    body:not(.dark-mode) header nav .nav-links.show.mobile-menu-overlay {
+        background: rgba(255, 255, 255, 0.85);
+        border-bottom: 1.5px solid #FF5B5B;
+    }
+
+    .header-right-buttons {
+        gap: 15px;
+    }
+
+    header nav a {
+        font-size: 1.1rem;
+        padding: 10px 30px;
+        width: 80%;
+    }
+
+    .footer-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+/*
+==============================================
+    DESKTOP (Min-width: 992px)
+==============================================
+*/
+@media (min-width: 992px) {
+
+    /* Alteração 1: Torna a <nav> um contêiner Flexbox */
+    header nav {
+        display: flex;
+        align-items: center;
+        /* Alinha os itens verticalmente no centro */
+        justify-content: flex-end;
+        /* Alinha os itens à direita */
+        width: auto;
+    }
+
+    /* Alteração 2: Alinha os botões à direita e adiciona um espaço */
+    .header-right-buttons {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-left: 20px;
+    }
+
+    header nav a {
+        width: auto;
+        max-width: none;
+        font-size: 0.9rem;
+    }
+
+    .cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 30px;
+    }
+
+    .cards>div {
+        max-width: none;
+        flex-basis: calc(33.333% - 20px);
+    }
+
+    .cards img {
+        width: 100%;
+    }
+
+    .cards-container>div:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .cards p {
+        font-size: 1.4rem;
+    }
+
+    .quem-somos p {
+        font-size: 1.4rem;
+    }
+
+    .porque-escolher ul {
+        font-size: 1.125rem;
+    }
+
+    .cards-container {
+        gap: 60px;
+    }
+
+    .cards-container img {
+        width: 40%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    .cards-container .text-content {
+        width: 55%;
+    }
+
+    .cards-container h3 {
+        font-size: 2rem;
+    }
+
+    .cards-container p {
+        font-size: 1.125rem;
+    }
+
+    .artigo-item h3 {
+        font-size: 1.8rem;
+    }
+
+    .artigo-item .resumo {
+        font-size: 1.4rem;
+    }
+
+    .certificados-row img {
+        height: 200px;
+        width: auto;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .certificados-quote p {
+        font-size: 1.4rem;
+    }
+
+    .contactos .map iframe {
+        min-height: 450px;
+    }
+
+    .footer-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer-col {
+        width: auto;
+    }
+
+    .footer-company h4,
+    .footer-links h4,
+    .footer-social h4 {
+        font-size: 1.25rem;
+        text-align: left;
+    }
+}
+
+/*
+==============================================
+    DESKTOP GRANDE (Min-width: 1240px)
+==============================================
+*/
+@media (min-width: 1240px) {
+
+    /* Ocultar o hambúrguer e alinhar os botões em desktops */
+    #hamburgerBtn {
+        display: none;
+    }
+
+    header {
+        height: 80px;
+        margin-top: 10px;
+        padding: 0 120px;
+    }
+
+     header .logo a {
+    height: 70px;
+    width: 350px;
+    }
+
+    header nav .nav-links {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        background: none;
+        padding: 0;
+        gap: 15px;
+        align-items: center;
+    }
+
+    header nav a {
+        font-size: 0.85rem;
+        padding: 5px 20px;
+        width: auto;
+    }
+
+
+    .logo_index .logo-img {
+        width: 80%;
+        max-width: 600px;
+        margin-top: 40px;
+        height: auto;
+    }
+
+    .lettering .lettering-img {
+        width: 80%;
+        max-width: 850px;
+        margin-top: 30px;
+        height: auto;
+    }
+
+    .slogan {
+        margin-bottom: 200px;
+        font-size: 1.8rem;
+    }
+
+    .quem-somos h2 {
+        font-size: 3rem;
+    }
+
+    .quem-somos p {
+        font-size: 1.25rem;
+    }
+
+    .cards-container img {
+        width: 35%;
+    }
+
+    .cards-container .text-content {
+        width: 60%;
+    }
+}
+
+/*
+==============================================
+    DESKTOP GRANDE (Min-width: 1440px)
+==============================================
+*/
+@media (min-width: 1440px) {
+
+    header {
+        padding: 0 120px;
+    }
+
+    .logo_index .logo-img {
+        width: 80%;
+        max-width: 680px;
+        margin-top: 40px;
+        height: auto;
+    }
+
+    .lettering .lettering-img {
+        width: 80%;
+        max-width: 880px;
+        margin-top: 20px;
+        height: auto;
+    }
+
+    .slogan {
+        margin-top: 20px;
+        margin-bottom: 300px;
+        font-size: 1.8rem;
+    }
+
+    .quem-somos h2 {
+        margin-top: 100px;
+        font-size: 3rem;
+    }
+
+    .quem-somos p {
+        font-size: 1.6rem;
+    }
+
+    .cards-container img {
+        width: 35%;
+    }
+
+    .cards-container .text-content {
+        width: 60%;
+    }
+}

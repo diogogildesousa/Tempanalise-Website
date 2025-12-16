@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}Tempanálise // Legislação{% endblock %}
+
+{% block content %}
+<h1 class="section-title">Legislação</h1>
+
+<section class="artigos">
+  <div class="container">
+    <ul class="artigos-list">
+      {% for pdf in pdfs %}
+      <li class="artigo-item">
+        <a href="{{ url_for('visualizar_pdf', filename=pdf.filename) }}">
+          <h3>{{ pdf.title }}</h3>
+          <span class="data">{{ pdf.date.strftime('%Y') if pdf.date else '—' }}</span>
+          <p class="resumo">{{ pdf.resumo }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

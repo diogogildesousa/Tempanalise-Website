@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{% block title %}Tempanálise{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2eO2zD0rJqg/A0w0iK7R9yFwXJ0w+K14bLgHl9L11J9A6/2w5d9Ff/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <div class="logo-header-img"></div>
+            </a>
+        </div>
+
+        <nav>
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}" class="{% if request.path == '/' %}active{% endif %}">HOME</a>
+                <a href="{{ url_for('servicos') }}"
+                    class="{% if request.path == '/servicos' %}active{% endif %}">SERVIÇOS</a>
+                <a href="{{ url_for('certificados') }}"
+                    class="{% if request.path == '/certificados' %}active{% endif %}">CERTIFICADOS</a>
+                <a href="{{ url_for('legislacao') }}"
+                    class="{% if request.path == '/legislacao' or request.path.startswith('/pdf/') %}active{% endif %}">LEGISLAÇÃO</a>
+                <a href="{{ url_for('contactos' )}}"
+                    class="{% if request.path == '/contactos' %}active{% endif %}">CONTACTOS</a>
+            </div>
+
+            <div class="header-right-buttons">
+                <div class="theme-toggle" id="theme-toggle">
+                    <div class="toggle-track">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                </div>
+
+                <button id="hamburgerBtn" class="hamburger-btn" aria-label="Menu de navegação">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-wrapper">
+
+            <div class="footer-col footer-company">
+                <h4>Detalhes</h4>
+
+                <p>
+                    <svg viewBox="0 0 384 512" width="16" height="16">
+                        <path
+                            d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z" />
+                    </svg>
+                    Rua do Barracão nº 7, 3105-235 Leiria
+                </p>
+
+                <p>
+                    <svg viewBox="0 0 512 512" width="16" height="16">
+                        <path
+                            d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z" />
+                    </svg>
+                    +351 933 779 063
+                </p>
+
+                <p>
+                    <svg class="email-icon" viewBox="0 -2.04 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M-8.417,3.169a2.493,2.493,0,0,0-.707-.707A2.481,2.481,0,0,0-10.5,2.045h-11a2.481,2.481,0,0,0-1.376.417,2.493,2.493,0,0,0-.707.707A2.483,2.483,0,0,0-24,4.545v6.91a2.5,2.5,0,0,0,2.5,2.5h11a2.5,2.5,0,0,0,2.5-2.5V4.545A2.483,2.483,0,0,0-8.417,3.169ZM-21.5,3.045h11a1.48,1.48,0,0,1,.643.151L-16,9.338-22.143,3.2A1.48,1.48,0,0,1-21.5,3.045Zm11,9.91h-11a1.48,1.48,0,0,1-.643-.151l3.087-3.087a.5.5,0,0,0,0-.707.5.5,0,0,0-.707,0L-22.85,12.1a1.489,1.489,0,0,1-.15-.642V4.545a1.489,1.489,0,0,1,.15-.642l6.5,6.5a.5.5,0,0,0,.354.146.5.5,0,0,0,.354-.146l6.5-6.5A1.489,1.489,0,0,1-9,4.545v6.91a1.489,1.489,0,0,1-.15.642L-12.237,9.01a.5.5,0,0,0-.707,0,.5.5,0,0,0,0,.707L-9.857,12.8A1.48,1.48,0,0,1-10.5,12.955Z" transform="translate(24 -2.045)"/>
+                    </svg>
+                    tempanalise@hotmail.com
+                </p>
+
+                <p>
+                    <svg viewBox="0 0 512 512" width="16" height="16">
+                        <path
+                            d="M256 8C119.03 8 8 119.03 8 256s111.03 248 248 248 248-111.03 248-248S392.97 8 256 8zm0 464c-119.1 0-216-96.9-216-216S136.9 40 256 40s216 96.9 216 216-96.9 216-216 216zm-12-352h24v120l92.3 55.4-12 20-100.3-60.3V120z" />
+                    </svg>
+                    Seg-Sex: 9:00 – 18:00
+                </p>
+
+            </div>
+
+            <div class="footer-col footer-links">
+
+                <h4>Ligações úteis</h4>
+                <ul>
+                    <li><a href="https://www.ipq.pt" target="_blank">Instituto Português da Qualidade</a></li>
+                    <li><a href="http://www.ipac.pt/" target="_blank">Instituto Português de Acreditação</a></li>
+                    <li><a href="https://www.tuv.com" target="_blank">TÜV</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-social">
+
+                <h4>Redes Sociais</h4>
+                <a href="https://www.facebook.com/profile.php?id=100046818915030" target="_blank" class="social-btn">Facebook</a>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+
+            &copy; 2025 Tempanálise, Lda // Todos os direitos reservados
+
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+</body>
+
+</html>

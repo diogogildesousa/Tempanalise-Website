@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Tempanálise // Acesso negado{% endblock %}
+
+{% block content %}
+<section class="erro">
+    <div class="container">
+        <h1 class="section-title">Erro 403</h1>
+        <p>Não tem permissões para aceder a esta página.</p>
+        <a href="{{ url_for('home') }}" class="btn-enviar">Voltar à página inicial</a>
+    </div>
+</section>
+{% endblock %}

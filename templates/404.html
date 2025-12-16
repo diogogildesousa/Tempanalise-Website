@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Tempanálise // Página não encontrada{% endblock %}
+
+{% block content %}
+<section class="erro">
+    <div class="container">
+        <h1 class="section-title">Erro 404</h1>
+        <p>A página que procura não existe ou foi movida.</p>
+        <a href="{{ url_for('home') }}" class="btn-enviar">Voltar à página inicial</a>
+    </div>
+</section>
+{% endblock %}

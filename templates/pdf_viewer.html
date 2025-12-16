@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}Visualizar PDF{% endblock %}
+
+{% block content %}
+<h1 class="section-title">{{ title }}</h1>
+
+<div class="pdf-container" style="max-width: 940px; margin: 40px auto;">
+    <iframe src="{{ url_for('serve_pdf', filename=filename) }}" width="100%" height="940px"></iframe>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{{ url_for('serve_pdf', filename=filename) }}" download class="btn-download">
+        Download PDF
+    </a>
+</div>
+
+<style>
+.btn-download {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 30px;
+    background: #FF5B5B;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-download:hover {
+    background: #8b2323;
+}
+</style>
+{% endblock %}
